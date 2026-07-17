@@ -20,9 +20,9 @@
         }
     </style>
 </head>
-<body class="liquid-bg min-h-screen text-slate-100 font-sans flex flex-col">
+<body class="liquid-bg min-h-screen text-slate-100 font-sans flex flex-col justify-between">
 
-    <!-- Authentication -->
+    <!-- Authentication Screen -->
     <div id="auth-screen" class="flex-grow flex items-center justify-center p-6">
         <div class="liquid-glass p-8 rounded-3xl max-w-md w-full liquid-glow">
             <div class="text-center mb-8">
@@ -30,50 +30,48 @@
                     <i class="fa-solid fa-circle-nodes"></i>
                 </div>
                 <h1 class="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">Creator Hub</h1>
-                <p class="text-slate-400 mt-2 text-sm">Upload music and build your artist dashboard</p>
+                <p class="text-slate-400 mt-2 text-sm">Upload & Edit Music Works</p>
             </div>
 
-            <!-- Tabs -->
             <div class="flex bg-slate-900/50 p-1.5 rounded-2xl mb-6">
                 <button id="tab-login" onclick="toggleAuthTab('login')" class="flex-1 py-2 text-sm font-semibold rounded-xl bg-teal-600 text-white transition-all">Log In</button>
-                <button id="tab-register" onclick="toggleAuthTab('register')" class="flex-1 py-2 text-sm font-semibold rounded-xl text-slate-400 transition-all">Join Creator Team</button>
+                <button id="tab-register" onclick="toggleAuthTab('register')" class="flex-1 py-2 text-sm font-semibold rounded-xl text-slate-400 transition-all">Join Team</button>
             </div>
 
             <!-- Login Form -->
             <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
-                    <label class="text-xs text-slate-400 uppercase tracking-wider block mb-2 font-medium">Username</label>
-                    <input type="text" id="login-username" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
+                    <label class="text-xs text-slate-400 block mb-2">Username</label>
+                    <input type="text" id="login-username" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
                 </div>
                 <div>
-                    <label class="text-xs text-slate-400 uppercase tracking-wider block mb-2 font-medium">Password</label>
-                    <input type="password" id="login-password" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
+                    <label class="text-xs text-slate-400 block mb-2">Password</label>
+                    <input type="password" id="login-password" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
                 </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 py-3 rounded-xl font-bold tracking-wide transition-all liquid-glow mt-4">Manage Library</button>
+                <button type="submit" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 py-3 rounded-xl font-bold tracking-wide liquid-glow mt-4">Manage Library</button>
             </form>
 
-            <!-- Register Form (Hidden Initially) -->
+            <!-- Register Form -->
             <form id="register-form" onsubmit="handleRegister(event)" class="space-y-4 hidden">
                 <div>
-                    <label class="text-xs text-slate-400 uppercase tracking-wider block mb-2 font-medium">Username</label>
-                    <input type="text" id="reg-username" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
+                    <label class="text-xs text-slate-400 block mb-2">Username</label>
+                    <input type="text" id="reg-username" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
                 </div>
                 <div>
-                    <label class="text-xs text-slate-400 uppercase tracking-wider block mb-2 font-medium">Creator Email</label>
-                    <input type="email" id="reg-email" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
+                    <label class="text-xs text-slate-400 block mb-2">Email</label>
+                    <input type="email" id="reg-email" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
                 </div>
                 <div>
-                    <label class="text-xs text-slate-400 uppercase tracking-wider block mb-2 font-medium">Password</label>
-                    <input type="password" id="reg-password" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
+                    <label class="text-xs text-slate-400 block mb-2">Password</label>
+                    <input type="password" id="reg-password" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
                 </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 py-3 rounded-xl font-bold tracking-wide transition-all liquid-glow mt-4">Register as Creator</button>
+                <button type="submit" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 py-3 rounded-xl font-bold tracking-wide liquid-glow mt-4">Register Account</button>
             </form>
         </div>
     </div>
 
     <!-- Creator Dashboard Screen -->
     <div id="creator-screen" class="hidden flex-grow flex flex-col lg:flex-row h-screen overflow-hidden">
-        <!-- Sidebar -->
         <aside class="w-full lg:w-64 liquid-glass flex flex-col justify-between p-6 border-r border-slate-800">
             <div>
                 <div class="flex items-center gap-3 mb-10">
@@ -81,96 +79,95 @@
                     <span class="text-xl font-bold tracking-tight">Creator Hub</span>
                 </div>
                 <div class="px-4 py-3 rounded-xl bg-teal-600/15 text-teal-300 font-semibold mb-3">
-                    <i class="fa-solid fa-upload mr-3"></i> Upload Track
+                    <i class="fa-solid fa-sliders mr-3"></i> Studio Workspace
                 </div>
             </div>
-            <!-- Identity and Logout -->
             <div class="mt-auto pt-6 border-t border-slate-800/60 flex items-center justify-between">
                 <div>
-                    <p class="text-xs text-slate-400">Creator Account</p>
+                    <p class="text-xs text-slate-400">Creator Profile</p>
                     <p id="creator-display-name" class="font-bold text-sm text-white">Artist Name</p>
                 </div>
-                <button onclick="logout()" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-red-950/40 hover:text-red-400 transition-all">
+                <button onclick="logout()" class="p-2.5 rounded-xl bg-slate-800/80 text-slate-400 hover:text-red-400 transition-all">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
             </div>
         </aside>
 
-        <!-- Dynamic Working Space -->
         <main class="flex-grow flex flex-col lg:flex-row p-6 overflow-y-auto gap-6">
-            <!-- Publishing Module -->
+            <!-- Upload / Edit Form -->
             <div class="flex-1 liquid-glass p-8 rounded-3xl h-fit">
-                <h2 class="text-2xl font-bold mb-1">Publish Track</h2>
-                <p class="text-slate-400 text-sm mb-6">Distribute your sound directly to the player library</p>
+                <h2 id="form-title" class="text-2xl font-bold mb-1">Publish Track</h2>
+                <p id="form-desc" class="text-slate-400 text-sm mb-6">Distribute sound directly to the live environment</p>
 
-                <form onsubmit="handleUpload(event)" class="space-y-5">
+                <form id="track-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                    <input type="hidden" id="edit-track-id">
                     <div>
                         <label class="text-xs text-slate-400 uppercase tracking-wider block mb-2 font-medium">Song Name</label>
-                        <input type="text" id="song-name" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
+                        <input type="text" id="song-name" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
                     </div>
 
-                    <!-- Thumbnail Form Control -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="text-xs text-slate-400 uppercase tracking-wider block mb-2 font-medium">Artwork Link (Optional)</label>
-                            <input type="url" id="thumbnail-url" placeholder="https://example.com/cover.jpg" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white text-sm transition-all">
+                            <label class="text-xs text-slate-400 block mb-2">Artwork Link</label>
+                            <input type="url" id="thumbnail-url" placeholder="https://..." class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white text-sm">
                         </div>
                         <div>
-                            <label class="text-xs text-slate-400 uppercase tracking-wider block mb-2 font-medium">Upload Local Artwork</label>
-                            <input type="file" id="thumbnail-file" accept="image/*" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-400 text-xs file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-teal-600/20 file:text-teal-400 file:hover:bg-teal-600/30 cursor-pointer">
+                            <label class="text-xs text-slate-400 block mb-2">Or Upload Local Image</label>
+                            <input type="file" id="thumbnail-file" accept="image/*" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-400 file:bg-teal-600/20 file:text-teal-400 file:border-0 file:rounded file:px-2 file:py-1 cursor-pointer">
                         </div>
                     </div>
 
-                    <!-- Audio File Form Control -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="text-xs text-slate-400 uppercase tracking-wider block mb-2 font-medium">Audio Source Link (Optional)</label>
-                            <input type="url" id="audio-url" placeholder="https://example.com/song.mp3" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white text-sm transition-all">
+                            <label class="text-xs text-slate-400 block mb-2">Audio Stream Link</label>
+                            <input type="url" id="audio-url" placeholder="https://..." class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white text-sm">
                         </div>
                         <div>
-                            <label class="text-xs text-slate-400 uppercase tracking-wider block mb-2 font-medium">Upload Local Audio file</label>
-                            <input type="file" id="audio-file" accept="audio/*" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-400 text-xs file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-teal-600/20 file:text-teal-400 file:hover:bg-teal-600/30 cursor-pointer">
+                            <label class="text-xs text-slate-400 block mb-2">Or Upload Local Audio</label>
+                            <input type="file" id="audio-file" accept="audio/*" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-400 file:bg-teal-600/20 file:text-teal-400 file:border-0 file:rounded file:px-2 file:py-1 cursor-pointer">
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 py-3.5 rounded-xl font-bold tracking-wide transition-all liquid-glow">Publish Live</button>
+                    <div class="flex gap-3">
+                        <button type="submit" id="submit-btn" class="flex-grow bg-gradient-to-r from-teal-600 to-cyan-600 py-3.5 rounded-xl font-bold tracking-wide liquid-glow transition-all">Publish Live</button>
+                        <button type="button" id="cancel-edit-btn" onclick="resetFormState()" class="hidden px-6 bg-slate-800 hover:bg-slate-700 rounded-xl text-sm font-semibold transition-all">Cancel</button>
+                    </div>
                 </form>
             </div>
 
-            <!-- Published Catalog Tracking -->
+            <!-- Track List Panel -->
             <div class="w-full lg:w-96 liquid-glass p-6 rounded-3xl flex flex-col h-[550px]">
                 <h3 class="text-xl font-bold mb-1">Your Discography</h3>
-                <p class="text-slate-400 text-xs mb-4">Live tracks currently streamable</p>
-
-                <div id="creator-tracks-container" class="flex-grow overflow-y-auto space-y-3 pr-2">
-                    <!-- Dynamic rendering via JS -->
-                </div>
+                <p class="text-slate-400 text-xs mb-4">Click edit on any entry to make modifications</p>
+                <div id="creator-tracks-container" class="flex-grow overflow-y-auto space-y-3 pr-2"></div>
             </div>
         </main>
     </div>
 
+    <footer class="w-full text-center py-4 bg-slate-950/40 border-t border-slate-900 text-xs text-slate-500 font-medium tracking-wide z-10">
+        Created by Biraj Biswas
+    </footer>
+
     <script>
         let activeCreator = "";
 
-        // Tab selection helper
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'uploaded_music') renderMyTracks();
+        });
+
         function toggleAuthTab(tab) {
             const loginTab = document.getElementById('tab-login');
             const registerTab = document.getElementById('tab-register');
             const loginForm = document.getElementById('login-form');
             const registerForm = document.getElementById('register-form');
-
             if (tab === 'login') {
                 loginTab.classList.add('bg-teal-600', 'text-white');
-                loginTab.classList.remove('text-slate-400');
                 registerTab.classList.remove('bg-teal-600', 'text-white');
-                registerTab.classList.add('text-slate-400');
                 loginForm.classList.remove('hidden');
                 registerForm.classList.add('hidden');
             } else {
                 registerTab.classList.add('bg-teal-600', 'text-white');
-                registerTab.classList.remove('text-slate-400');
                 loginTab.classList.remove('bg-teal-600', 'text-white');
-                loginTab.classList.add('text-slate-400');
                 registerForm.classList.remove('hidden');
                 loginForm.classList.add('hidden');
             }
@@ -181,36 +178,26 @@
             const username = document.getElementById('reg-username').value;
             const email = document.getElementById('reg-email').value;
             const password = document.getElementById('reg-password').value;
-
             let creators = JSON.parse(localStorage.getItem('registered_creators')) || [];
-            if (creators.find(c => c.username === username)) {
-                alert("Creator name is already active.");
-                return;
-            }
-
+            if (creators.find(c => c.username === username)) { alert("Creator name already active."); return; }
             creators.push({ username, email, password, registeredAt: new Date().toLocaleString() });
             localStorage.setItem('registered_creators', JSON.stringify(creators));
-            alert("Creator account established! Please log in.");
-            toggleAuthTab('login');
+            alert("Account established!"); toggleAuthTab('login');
         }
 
         function handleLogin(e) {
             e.preventDefault();
             const username = document.getElementById('login-username').value;
             const password = document.getElementById('login-password').value;
-
             let creators = JSON.parse(localStorage.getItem('registered_creators')) || [];
             const creator = creators.find(c => c.username === username && c.password === password);
-
             if (creator) {
                 activeCreator = creator.username;
                 document.getElementById('auth-screen').classList.add('hidden');
                 document.getElementById('creator-screen').classList.remove('hidden');
                 document.getElementById('creator-display-name').textContent = creator.username;
                 renderMyTracks();
-            } else {
-                alert("Invalid verification credentials.");
-            }
+            } else { alert("Invalid credentials."); }
         }
 
         function logout() {
@@ -219,61 +206,82 @@
             activeCreator = "";
         }
 
-        // Convert files to Base64 strings to stay within client storage
         function getBase64(file) {
             return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = error => reject(error);
+                const reader = new FileReader(); reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result); reader.onerror = error => reject(error);
             });
         }
 
-        async function handleUpload(e) {
+        async function handleFormSubmit(e) {
             e.preventDefault();
+            const trackId = document.getElementById('edit-track-id').value;
             const name = document.getElementById('song-name').value;
             const thumbUrl = document.getElementById('thumbnail-url').value;
             const thumbFile = document.getElementById('thumbnail-file').files[0];
             const audioUrl = document.getElementById('audio-url').value;
             const audioFile = document.getElementById('audio-file').files[0];
 
-            let finalThumbnail = "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=300"; // default cover
-            let finalAudio = "";
-
-            // Evaluate image sources
-            if (thumbFile) {
-                try { finalThumbnail = await getBase64(thumbFile); } catch (err) { alert("Thumbnail parsing failed."); return; }
-            } else if (thumbUrl) {
-                finalThumbnail = thumbUrl;
-            }
-
-            // Evaluate audio sources
-            if (audioFile) {
-                try { finalAudio = await getBase64(audioFile); } catch (err) { alert("Audio parsing failed."); return; }
-            } else if (audioUrl) {
-                finalAudio = audioUrl;
-            } else {
-                alert("Please supply either an online stream URL or select a local audio file.");
-                return;
-            }
-
             let database = JSON.parse(localStorage.getItem('uploaded_music')) || [];
-            database.push({
-                name,
-                creator: activeCreator,
-                thumbnail: finalThumbnail,
-                songSource: finalAudio,
-                timestamp: new Date().toLocaleString()
-            });
+            let targetTrack = trackId ? database.find(t => t.id === trackId) : null;
 
-            try {
-                localStorage.setItem('uploaded_music', JSON.stringify(database));
-                alert("Track successfully distributed!");
-                e.target.reset();
-                renderMyTracks();
-            } catch (error) {
-                alert("Local storage capacity limit reached. Try using a hotlink address instead of uploading large files.");
+            let finalThumbnail = targetTrack ? targetTrack.thumbnail : "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=300";
+            let finalAudio = targetTrack ? targetTrack.songSource : "";
+
+            if (thumbFile) finalThumbnail = await getBase64(thumbFile);
+            else if (thumbUrl) finalThumbnail = thumbUrl;
+
+            if (audioFile) finalAudio = await getBase64(audioFile);
+            else if (audioUrl) finalAudio = audioUrl;
+
+            if (!finalAudio) { alert("Please provide an audio asset location."); return; }
+
+            if (trackId && targetTrack) {
+                // Update properties of an existing track
+                targetTrack.name = name;
+                targetTrack.thumbnail = finalThumbnail;
+                targetTrack.songSource = finalAudio;
+            } else {
+                // Push new registration entry
+                database.push({
+                    id: 'TRK_' + Date.now(),
+                    name,
+                    creator: activeCreator,
+                    thumbnail: finalThumbnail,
+                    songSource: finalAudio,
+                    timestamp: new Date().toLocaleString()
+                });
             }
+
+            localStorage.setItem('uploaded_music', JSON.stringify(database));
+            alert(trackId ? "Track edits saved successfully!" : "Track published live!");
+            resetFormState();
+            renderMyTracks();
+        }
+
+        function loadTrackIntoEditor(id) {
+            const database = JSON.parse(localStorage.getItem('uploaded_music')) || [];
+            const track = database.find(t => t.id === id);
+            if (!track) return;
+
+            document.getElementById('edit-track-id').value = track.id;
+            document.getElementById('song-name').value = track.name;
+            document.getElementById('thumbnail-url').value = track.thumbnail.startsWith('data:') ? '' : track.thumbnail;
+            document.getElementById('audio-url').value = track.songSource.startsWith('data:') ? '' : track.songSource;
+
+            document.getElementById('form-title').textContent = "Edit Track Properties";
+            document.getElementById('form-desc').textContent = `Modifying properties for: ${track.name}`;
+            document.getElementById('submit-btn').textContent = "Save Changes";
+            document.getElementById('cancel-edit-btn').classList.remove('hidden');
+        }
+
+        function resetFormState() {
+            document.getElementById('track-form').reset();
+            document.getElementById('edit-track-id').value = '';
+            document.getElementById('form-title').textContent = "Publish Track";
+            document.getElementById('form-desc').textContent = "Distribute sound directly to the live environment";
+            document.getElementById('submit-btn').textContent = "Publish Live";
+            document.getElementById('cancel-edit-btn').classList.add('hidden');
         }
 
         function renderMyTracks() {
@@ -282,20 +290,21 @@
             const myTracks = db.filter(t => t.creator === activeCreator);
 
             if (myTracks.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-10 text-slate-500 text-xs">
-                        No songs published yet.
-                    </div>`;
+                container.innerHTML = `<div class="text-center py-10 text-slate-500 text-xs">No songs published.</div>`;
                 return;
             }
-
             container.innerHTML = myTracks.map(t => `
-                <div class="flex items-center gap-3 bg-slate-950/40 p-3 rounded-xl border border-slate-800/40">
-                    <img src="${t.thumbnail}" class="w-10 h-10 object-cover rounded-lg" alt="">
-                    <div class="min-w-0 flex-grow">
-                        <p class="text-xs font-bold text-white truncate">${t.name}</p>
-                        <p class="text-[10px] text-slate-500">${t.timestamp}</p>
+                <div class="flex items-center justify-between bg-slate-950/40 p-3 rounded-xl border border-slate-800/40 hover:border-teal-500/30 transition-all">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <img src="${t.thumbnail}" class="w-10 h-10 object-cover rounded-lg">
+                        <div class="min-w-0">
+                            <p class="text-xs font-bold text-white truncate">${t.name}</p>
+                            <p class="text-[10px] text-slate-500">${t.timestamp}</p>
+                        </div>
                     </div>
+                    <button onclick="loadTrackIntoEditor('${t.id}')" class="p-2 text-teal-400 hover:bg-teal-500/10 rounded-lg text-xs font-medium transition-all">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit
+                    </button>
                 </div>
             `).join('');
         }
