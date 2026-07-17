@@ -7,17 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        .liquid-bg {
-            background: linear-gradient(135deg, #090d16 0%, #0d1e1f 50%, #0d121c 100%);
-        }
-        .liquid-glass {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .liquid-glow {
-            box-shadow: 0 0 30px rgba(20, 184, 166, 0.25);
-        }
+        .liquid-bg { background: linear-gradient(135deg, #090d16 0%, #0d1e1f 50%, #0d121c 100%); }
+        .liquid-glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06); }
+        .liquid-glow { box-shadow: 0 0 30px rgba(20, 184, 166, 0.25); }
     </style>
 </head>
 <body class="liquid-bg min-h-screen text-slate-100 font-sans flex flex-col justify-between">
@@ -26,46 +18,41 @@
     <div id="auth-screen" class="flex-grow flex items-center justify-center p-6">
         <div class="liquid-glass p-8 rounded-3xl max-w-md w-full liquid-glow">
             <div class="text-center mb-8">
-                <div class="inline-flex p-3 rounded-full bg-teal-500/20 text-teal-400 text-3xl mb-3">
-                    <i class="fa-solid fa-circle-nodes"></i>
-                </div>
+                <div class="inline-flex p-3 rounded-full bg-teal-500/20 text-teal-400 text-3xl mb-3"><i class="fa-solid fa-circle-nodes"></i></div>
                 <h1 class="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">Creator Hub</h1>
-                <p class="text-slate-400 mt-2 text-sm">Upload & Edit Music Works</p>
             </div>
 
             <div class="flex bg-slate-900/50 p-1.5 rounded-2xl mb-6">
                 <button id="tab-login" onclick="toggleAuthTab('login')" class="flex-1 py-2 text-sm font-semibold rounded-xl bg-teal-600 text-white transition-all">Log In</button>
-                <button id="tab-register" onclick="toggleAuthTab('register')" class="flex-1 py-2 text-sm font-semibold rounded-xl text-slate-400 transition-all">Join Team</button>
+                <button id="tab-register" onclick="toggleAuthTab('register')" class="flex-1 py-2 text-sm font-semibold rounded-xl text-slate-400 transition-all">Join Platform</button>
             </div>
 
-            <!-- Login Form -->
             <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
-                    <label class="text-xs text-slate-400 block mb-2">Username</label>
-                    <input type="text" id="login-username" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
+                    <label class="text-xs text-slate-400 block mb-2 font-medium">Username</label>
+                    <input type="text" id="login-username" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
                 </div>
                 <div>
-                    <label class="text-xs text-slate-400 block mb-2">Password</label>
-                    <input type="password" id="login-password" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
+                    <label class="text-xs text-slate-400 block mb-2 font-medium">Password</label>
+                    <input type="password" id="login-password" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
                 </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 py-3 rounded-xl font-bold tracking-wide liquid-glow mt-4">Manage Library</button>
+                <button type="submit" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 py-3 rounded-xl font-bold transition-all liquid-glow mt-4">Manage Workspace</button>
             </form>
 
-            <!-- Register Form -->
             <form id="register-form" onsubmit="handleRegister(event)" class="space-y-4 hidden">
                 <div>
-                    <label class="text-xs text-slate-400 block mb-2">Username</label>
-                    <input type="text" id="reg-username" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
+                    <label class="text-xs text-slate-400 block mb-2 font-medium">Username</label>
+                    <input type="text" id="reg-username" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
                 </div>
                 <div>
-                    <label class="text-xs text-slate-400 block mb-2">Email</label>
-                    <input type="email" id="reg-email" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
+                    <label class="text-xs text-slate-400 block mb-2 font-medium">Creator Email</label>
+                    <input type="email" id="reg-email" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
                 </div>
                 <div>
-                    <label class="text-xs text-slate-400 block mb-2">Password</label>
-                    <input type="password" id="reg-password" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
+                    <label class="text-xs text-slate-400 block mb-2 font-medium">Password</label>
+                    <input type="password" id="reg-password" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
                 </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 py-3 rounded-xl font-bold tracking-wide liquid-glow mt-4">Register Account</button>
+                <button type="submit" class="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 py-3 rounded-xl font-bold transition-all liquid-glow mt-4">Register Account</button>
             </form>
         </div>
     </div>
@@ -84,92 +71,85 @@
             </div>
             <div class="mt-auto pt-6 border-t border-slate-800/60 flex items-center justify-between">
                 <div>
-                    <p class="text-xs text-slate-400">Creator Profile</p>
+                    <p class="text-xs text-slate-400">Creator Account</p>
                     <p id="creator-display-name" class="font-bold text-sm text-white">Artist Name</p>
                 </div>
-                <button onclick="logout()" class="p-2.5 rounded-xl bg-slate-800/80 text-slate-400 hover:text-red-400 transition-all">
+                <button onclick="logout()" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-red-950/40 hover:text-red-400 transition-all">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
             </div>
         </aside>
 
         <main class="flex-grow flex flex-col lg:flex-row p-6 overflow-y-auto gap-6">
-            <!-- Upload / Edit Form -->
+            <!-- Publishing & Editing Module -->
             <div class="flex-1 liquid-glass p-8 rounded-3xl h-fit">
                 <h2 id="form-title" class="text-2xl font-bold mb-1">Publish Track</h2>
-                <p id="form-desc" class="text-slate-400 text-sm mb-6">Distribute sound directly to the live environment</p>
+                <p id="form-desc" class="text-slate-400 text-sm mb-6">Distribute your sound directly to the player library</p>
 
-                <form id="track-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
-                    <input type="hidden" id="edit-track-id">
+                <form id="track-form" onsubmit="handleUploadOrEdit(event)" class="space-y-5">
                     <div>
-                        <label class="text-xs text-slate-400 uppercase tracking-wider block mb-2 font-medium">Song Name</label>
-                        <input type="text" id="song-name" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white">
+                        <label class="text-xs text-slate-400 block mb-2 font-medium">Song Name</label>
+                        <input type="text" id="song-name" required class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white transition-all">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="text-xs text-slate-400 block mb-2">Artwork Link</label>
-                            <input type="url" id="thumbnail-url" placeholder="https://..." class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white text-sm">
+                            <label class="text-xs text-slate-400 block mb-2 font-medium">Artwork Link (Optional)</label>
+                            <input type="url" id="thumbnail-url" placeholder="https://example.com/cover.jpg" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white text-sm transition-all">
                         </div>
                         <div>
-                            <label class="text-xs text-slate-400 block mb-2">Or Upload Local Image</label>
-                            <input type="file" id="thumbnail-file" accept="image/*" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-400 file:bg-teal-600/20 file:text-teal-400 file:border-0 file:rounded file:px-2 file:py-1 cursor-pointer">
+                            <label class="text-xs text-slate-400 block mb-2 font-medium">Upload Local Artwork</label>
+                            <input type="file" id="thumbnail-file" accept="image/*" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-400 text-xs file:mr-4 file:py-1.5 file:px-3 file:bg-teal-600/20 file:text-teal-400 cursor-pointer">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="text-xs text-slate-400 block mb-2">Audio Stream Link</label>
-                            <input type="url" id="audio-url" placeholder="https://..." class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white text-sm">
+                            <label class="text-xs text-slate-400 block mb-2 font-medium">Audio Link (Optional)</label>
+                            <input type="url" id="audio-url" placeholder="https://example.com/song.mp3" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:border-teal-500 text-white text-sm transition-all">
                         </div>
                         <div>
-                            <label class="text-xs text-slate-400 block mb-2">Or Upload Local Audio</label>
-                            <input type="file" id="audio-file" accept="audio/*" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-slate-400 file:bg-teal-600/20 file:text-teal-400 file:border-0 file:rounded file:px-2 file:py-1 cursor-pointer">
+                            <label class="text-xs text-slate-400 block mb-2 font-medium">Upload Local Audio</label>
+                            <input type="file" id="audio-file" accept="audio/*" class="w-full bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-400 text-xs file:mr-4 file:py-1.5 file:px-3 file:bg-teal-600/20 file:text-teal-400 cursor-pointer">
                         </div>
                     </div>
 
-                    <div class="flex gap-3">
-                        <button type="submit" id="submit-btn" class="flex-grow bg-gradient-to-r from-teal-600 to-cyan-600 py-3.5 rounded-xl font-bold tracking-wide liquid-glow transition-all">Publish Live</button>
-                        <button type="button" id="cancel-edit-btn" onclick="resetFormState()" class="hidden px-6 bg-slate-800 hover:bg-slate-700 rounded-xl text-sm font-semibold transition-all">Cancel</button>
+                    <div class="flex gap-4">
+                        <button type="submit" id="submit-btn" class="flex-grow bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 py-3.5 rounded-xl font-bold transition-all liquid-glow">Publish Live</button>
+                        <button type="button" id="cancel-edit-btn" onclick="exitEditMode()" class="hidden px-6 bg-slate-800 hover:bg-slate-700 text-white rounded-xl transition-all">Cancel</button>
                     </div>
                 </form>
             </div>
 
-            <!-- Track List Panel -->
+            <!-- Published Catalog Tracking with Edit Action Triggers -->
             <div class="w-full lg:w-96 liquid-glass p-6 rounded-3xl flex flex-col h-[550px]">
                 <h3 class="text-xl font-bold mb-1">Your Discography</h3>
-                <p class="text-slate-400 text-xs mb-4">Click edit on any entry to make modifications</p>
+                <p class="text-slate-400 text-xs mb-4">Click edit to alter your live song components.</p>
                 <div id="creator-tracks-container" class="flex-grow overflow-y-auto space-y-3 pr-2"></div>
             </div>
         </main>
     </div>
 
-    <footer class="w-full text-center py-4 bg-slate-950/40 border-t border-slate-900 text-xs text-slate-500 font-medium tracking-wide z-10">
+    <!-- Universal Credit Footer -->
+    <footer class="w-full text-center py-4 text-xs font-semibold tracking-wider text-slate-500 border-t border-slate-900 bg-slate-950/40 backdrop-blur">
         Created by Biraj Biswas
     </footer>
 
     <script>
         let activeCreator = "";
-
-        window.addEventListener('storage', (e) => {
-            if (e.key === 'uploaded_music') renderMyTracks();
-        });
+        let editingTrackIndex = -1; // -1 means we are creating a new song instead of editing
 
         function toggleAuthTab(tab) {
-            const loginTab = document.getElementById('tab-login');
-            const registerTab = document.getElementById('tab-register');
-            const loginForm = document.getElementById('login-form');
-            const registerForm = document.getElementById('register-form');
+            const loginTab = document.getElementById('tab-login'), registerTab = document.getElementById('tab-register');
+            const loginForm = document.getElementById('login-form'), registerForm = document.getElementById('register-form');
             if (tab === 'login') {
-                loginTab.classList.add('bg-teal-600', 'text-white');
-                registerTab.classList.remove('bg-teal-600', 'text-white');
-                loginForm.classList.remove('hidden');
-                registerForm.classList.add('hidden');
+                loginTab.className = "flex-1 py-2 text-sm font-semibold rounded-xl bg-teal-600 text-white transition-all";
+                registerTab.className = "flex-1 py-2 text-sm font-semibold rounded-xl text-slate-400 transition-all";
+                loginForm.classList.remove('hidden'); registerForm.classList.add('hidden');
             } else {
-                registerTab.classList.add('bg-teal-600', 'text-white');
-                loginTab.classList.remove('bg-teal-600', 'text-white');
-                registerForm.classList.remove('hidden');
-                loginForm.classList.add('hidden');
+                registerTab.className = "flex-1 py-2 text-sm font-semibold rounded-xl bg-teal-600 text-white transition-all";
+                loginTab.className = "flex-1 py-2 text-sm font-semibold rounded-xl text-slate-400 transition-all";
+                registerForm.classList.remove('hidden'); loginForm.classList.add('hidden');
             }
         }
 
@@ -179,10 +159,11 @@
             const email = document.getElementById('reg-email').value;
             const password = document.getElementById('reg-password').value;
             let creators = JSON.parse(localStorage.getItem('registered_creators')) || [];
-            if (creators.find(c => c.username === username)) { alert("Creator name already active."); return; }
-            creators.push({ username, email, password, registeredAt: new Date().toLocaleString() });
+            if (creators.find(c => c.username === username)) { alert("Name taken."); return; }
+            creators.push({ username, email, password, registeredAt: new Date().toLocaleString(), status: 'Approved' });
             localStorage.setItem('registered_creators', JSON.stringify(creators));
-            alert("Account established!"); toggleAuthTab('login');
+            alert("Creator account setup successful!");
+            toggleAuthTab('login');
         }
 
         function handleLogin(e) {
@@ -197,14 +178,10 @@
                 document.getElementById('creator-screen').classList.remove('hidden');
                 document.getElementById('creator-display-name').textContent = creator.username;
                 renderMyTracks();
-            } else { alert("Invalid credentials."); }
+            } else { alert("Verification failed."); }
         }
 
-        function logout() {
-            document.getElementById('creator-screen').classList.add('hidden');
-            document.getElementById('auth-screen').classList.remove('hidden');
-            activeCreator = "";
-        }
+        function logout() { document.getElementById('creator-screen').classList.add('hidden'); document.getElementById('auth-screen').classList.remove('hidden'); activeCreator = ""; }
 
         function getBase64(file) {
             return new Promise((resolve, reject) => {
@@ -213,9 +190,8 @@
             });
         }
 
-        async function handleFormSubmit(e) {
+        async function handleUploadOrEdit(e) {
             e.preventDefault();
-            const trackId = document.getElementById('edit-track-id').value;
             const name = document.getElementById('song-name').value;
             const thumbUrl = document.getElementById('thumbnail-url').value;
             const thumbFile = document.getElementById('thumbnail-file').files[0];
@@ -223,78 +199,76 @@
             const audioFile = document.getElementById('audio-file').files[0];
 
             let database = JSON.parse(localStorage.getItem('uploaded_music')) || [];
-            let targetTrack = trackId ? database.find(t => t.id === trackId) : null;
+            let finalThumbnail = "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=300";
+            let finalAudio = "";
 
-            let finalThumbnail = targetTrack ? targetTrack.thumbnail : "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=300";
-            let finalAudio = targetTrack ? targetTrack.songSource : "";
+            if (editingTrackIndex !== -1) {
+                finalThumbnail = database[editingTrackIndex].thumbnail;
+                finalAudio = database[editingTrackIndex].songSource;
+            }
 
-            if (thumbFile) finalThumbnail = await getBase64(thumbFile);
-            else if (thumbUrl) finalThumbnail = thumbUrl;
+            if (thumbFile) { finalThumbnail = await getBase64(thumbFile); }
+            else if (thumbUrl) { finalThumbnail = thumbUrl; }
 
-            if (audioFile) finalAudio = await getBase64(audioFile);
-            else if (audioUrl) finalAudio = audioUrl;
+            if (audioFile) { finalAudio = await getBase64(audioFile); }
+            else if (audioUrl) { finalAudio = audioUrl; }
 
-            if (!finalAudio) { alert("Please provide an audio asset location."); return; }
+            if (!finalAudio) { alert("Please supply audio source."); return; }
 
-            if (trackId && targetTrack) {
-                // Update properties of an existing track
-                targetTrack.name = name;
-                targetTrack.thumbnail = finalThumbnail;
-                targetTrack.songSource = finalAudio;
+            if (editingTrackIndex === -1) {
+                // Publish Mode
+                database.push({ name, creator: activeCreator, thumbnail: finalThumbnail, songSource: finalAudio, timestamp: new Date().toLocaleString() });
             } else {
-                // Push new registration entry
-                database.push({
-                    id: 'TRK_' + Date.now(),
-                    name,
-                    creator: activeCreator,
-                    thumbnail: finalThumbnail,
-                    songSource: finalAudio,
-                    timestamp: new Date().toLocaleString()
-                });
+                // Edit / Update Mode
+                database[editingTrackIndex] = { ...database[editingTrackIndex], name, thumbnail: finalThumbnail, songSource: finalAudio };
+                exitEditMode();
             }
 
             localStorage.setItem('uploaded_music', JSON.stringify(database));
-            alert(trackId ? "Track edits saved successfully!" : "Track published live!");
-            resetFormState();
             renderMyTracks();
+            e.target.reset();
         }
 
-        function loadTrackIntoEditor(id) {
+        function enterEditMode(globalIndex) {
             const database = JSON.parse(localStorage.getItem('uploaded_music')) || [];
-            const track = database.find(t => t.id === id);
+            const track = database[globalIndex];
             if (!track) return;
 
-            document.getElementById('edit-track-id').value = track.id;
+            editingTrackIndex = globalIndex;
+            document.getElementById('form-title').textContent = "Modify Track Components";
+            document.getElementById('form-desc').textContent = `Editing track index profile: ${track.name}`;
             document.getElementById('song-name').value = track.name;
-            document.getElementById('thumbnail-url').value = track.thumbnail.startsWith('data:') ? '' : track.thumbnail;
-            document.getElementById('audio-url').value = track.songSource.startsWith('data:') ? '' : track.songSource;
+            if (track.thumbnail.startsWith('http')) document.getElementById('thumbnail-url').value = track.thumbnail;
+            if (track.songSource.startsWith('http')) document.getElementById('audio-url').value = track.songSource;
 
-            document.getElementById('form-title').textContent = "Edit Track Properties";
-            document.getElementById('form-desc').textContent = `Modifying properties for: ${track.name}`;
-            document.getElementById('submit-btn').textContent = "Save Changes";
+            document.getElementById('submit-btn').textContent = "Save Modifications";
             document.getElementById('cancel-edit-btn').classList.remove('hidden');
         }
 
-        function resetFormState() {
-            document.getElementById('track-form').reset();
-            document.getElementById('edit-track-id').value = '';
+        function exitEditMode() {
+            editingTrackIndex = -1;
             document.getElementById('form-title').textContent = "Publish Track";
-            document.getElementById('form-desc').textContent = "Distribute sound directly to the live environment";
+            document.getElementById('form-desc').textContent = "Distribute your sound directly to the player library";
             document.getElementById('submit-btn').textContent = "Publish Live";
             document.getElementById('cancel-edit-btn').classList.add('hidden');
+            document.getElementById('track-form').reset();
         }
 
         function renderMyTracks() {
             const container = document.getElementById('creator-tracks-container');
             const db = JSON.parse(localStorage.getItem('uploaded_music')) || [];
-            const myTracks = db.filter(t => t.creator === activeCreator);
+            
+            // Map items but keep original indices for edits
+            const annotatedDb = db.map((t, idx) => ({ ...t, originalIndex: idx }));
+            const myTracks = annotatedDb.filter(t => t.creator === activeCreator);
 
             if (myTracks.length === 0) {
-                container.innerHTML = `<div class="text-center py-10 text-slate-500 text-xs">No songs published.</div>`;
+                container.innerHTML = `<div class="text-center py-10 text-slate-500 text-xs">No published tracks.</div>`;
                 return;
             }
+
             container.innerHTML = myTracks.map(t => `
-                <div class="flex items-center justify-between bg-slate-950/40 p-3 rounded-xl border border-slate-800/40 hover:border-teal-500/30 transition-all">
+                <div class="flex items-center justify-between bg-slate-950/40 p-3 rounded-xl border border-slate-800/40">
                     <div class="flex items-center gap-3 min-w-0">
                         <img src="${t.thumbnail}" class="w-10 h-10 object-cover rounded-lg">
                         <div class="min-w-0">
@@ -302,12 +276,17 @@
                             <p class="text-[10px] text-slate-500">${t.timestamp}</p>
                         </div>
                     </div>
-                    <button onclick="loadTrackIntoEditor('${t.id}')" class="p-2 text-teal-400 hover:bg-teal-500/10 rounded-lg text-xs font-medium transition-all">
+                    <button onclick="enterEditMode(${t.originalIndex})" class="text-xs font-bold bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 px-3 py-1.5 rounded-lg transition-all ml-2">
                         <i class="fa-solid fa-pen-to-square"></i> Edit
                     </button>
                 </div>
             `).join('');
         }
+
+        // Auto Refresh if tracks or database profiles change in background
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'uploaded_music') { renderMyTracks(); }
+        });
     </script>
 </body>
 </html>
